@@ -1,4 +1,4 @@
-package com.iuservice.udacity.androiddevelopernanodegree.project0;
+package com.iuservice.udacity.androiddevelopernanodegree.app.p0.portfolio;
 
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
