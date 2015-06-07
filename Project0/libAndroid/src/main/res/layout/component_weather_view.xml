@@ -1,0 +1,71 @@
+<FrameLayout
+  style="@style/My.Layout.FullWidth.Outer"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+
+  <LinearLayout
+    style="@style/My.Layout.FullWidth.Outer"
+    android:layout_gravity="center_vertical"
+    android:background="#ff0000"
+    android:orientation="vertical">
+
+    <TextView
+      android:layout_width="fill_parent"
+      android:layout_height="wrap_content"
+      android:text="Medium Text"
+      android:textAppearance="?android:attr/textAppearanceLarge"/>
+
+    <LinearLayout
+      style="@style/My.Layout.Full.Inner"
+      android:orientation="horizontal">
+
+      <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_weight="3"
+        android:gravity="center_vertical"
+        android:orientation="vertical">
+
+        <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:paddingLeft="@dimen/activity_margin"
+          android:paddingTop="@dimen/activity_margin"
+          android:text="Medium Text"
+          android:textSize="@dimen/abc_text_size_large_material"/>
+
+        <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:paddingLeft="@dimen/activity_margin"
+          android:text="Medium Text"
+          android:textSize="@dimen/abc_text_size_large_material"/>
+      </LinearLayout>
+
+      <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <ImageView
+          android:id="@+id/imageView"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_weight="2"
+          android:src="@drawable/abc_ratingbar_full_material"
+          />
+
+        <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_weight="1"
+          android:text="Medium Text"
+          android:textAppearance="?android:attr/textAppearanceMedium"/>
+
+      </LinearLayout>
+
+    </LinearLayout>
+  </LinearLayout>
+
+</FrameLayout>
