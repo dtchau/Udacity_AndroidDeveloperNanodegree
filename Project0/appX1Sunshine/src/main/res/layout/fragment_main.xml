@@ -1,15 +1,11 @@
-<RelativeLayout
+<FrameLayout
   style="@style/My.Layout.Full.Outer"
   xmlns:android="http://schemas.android.com/apk/res/android"
   xmlns:tools="http://schemas.android.com/tools"
   tools:context=".MainActivityFragment">
 
-  <TextView
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="@string/hello_world"/>
+  <ListView
+    android:id="@+id/list_view_forecast"
+    style="@style/My.Layout.Full.Inner"></ListView>
 
-  <com.iuservice.lib.android.ui.component.WeatherView
-    style="@style/My.Layout.Full"/>
-
-</RelativeLayout>
+</FrameLayout>

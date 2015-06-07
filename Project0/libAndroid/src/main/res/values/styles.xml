@@ -20,7 +20,7 @@
   </style>
 
   <style name="My.Layout.FullWidth.Outer">
-    <item name="android:padding">@dimen/activity_margin</item>
+    <item name="android:padding">?android:layout</item>
   </style>
 
   <style name="My.Layout.FullWidth.Inner">
