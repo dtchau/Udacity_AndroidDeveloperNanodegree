@@ -1,1 +1,1 @@
-include ':appP0Portfolio', ':libAndroid'
+include ':appP0Portfolio', ':libAndroid', ':appX1Sunshine'
