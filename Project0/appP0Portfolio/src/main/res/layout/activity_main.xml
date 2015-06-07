@@ -1,7 +1,8 @@
-<RelativeLayout style="@style/My.Layout.Full.Outer"
-                xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:tools="http://schemas.android.com/tools"
-                tools:context=".MainActivity">
+<RelativeLayout
+  style="@style/My.Layout.Full.Outer"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:tools="http://schemas.android.com/tools"
+  tools:context=".MainActivity">
 
   <LinearLayout
     android:id="@+id/buttonPanel"
