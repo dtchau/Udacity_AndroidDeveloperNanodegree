@@ -5,8 +5,10 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.iuservice.lib.android.dagger.IuActivity;
 
-public class MainActivity extends ActionBarActivity {
+
+public class MainActivity extends IuActivity {
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {

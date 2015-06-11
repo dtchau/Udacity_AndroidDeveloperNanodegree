@@ -2,7 +2,7 @@ package com.iuservice.lib.android.dagger.module;
 
 import android.content.Context;
 
-import com.iuservice.lib.android.dagger.DaggerApplication;
+import com.iuservice.lib.android.dagger.IuApplication;
 
 import javax.inject.Singleton;
 
@@ -14,20 +14,22 @@ import dagger.Provides;
  * @date 2015-06-10.
  */
 @Module
-public class DaggerApplicationModule {
+public class IuApplicationModule {
 
-  private DaggerApplication m_application;
+  private IuApplication m_application;
 
-  public DaggerApplicationModule(DaggerApplication application) {
+  public IuApplicationModule(IuApplication application) {
     m_application = application;
   }
 
-  @Provides @Singleton
-  DaggerApplication provideApplication() {
+  @Provides
+  @Singleton
+  IuApplication provideApplication() {
     return m_application;
   }
 
-  @Provides @Singleton
+  @Provides
+  @Singleton
   Context provideApplicationContext() {
     return m_application;
   }
