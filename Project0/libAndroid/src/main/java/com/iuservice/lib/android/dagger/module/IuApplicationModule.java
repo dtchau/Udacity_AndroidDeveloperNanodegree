@@ -1,8 +1,7 @@
 package com.iuservice.lib.android.dagger.module;
 
+import android.app.Application;
 import android.content.Context;
-
-import com.iuservice.lib.android.dagger.IuApplication;
 
 import javax.inject.Singleton;
 
@@ -16,15 +15,15 @@ import dagger.Provides;
 @Module
 public class IuApplicationModule {
 
-  private IuApplication m_application;
+  private Application m_application;
 
-  public IuApplicationModule(IuApplication application) {
+  public IuApplicationModule(Application application) {
     m_application = application;
   }
 
   @Provides
   @Singleton
-  IuApplication provideApplication() {
+  Application provideApplication() {
     return m_application;
   }
 

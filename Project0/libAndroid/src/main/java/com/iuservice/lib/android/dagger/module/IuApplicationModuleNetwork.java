@@ -1,12 +1,10 @@
 package com.iuservice.lib.android.dagger.module;
 
-import com.squareup.okhttp.OkHttpClient;
-import com.squareup.okhttp.Request;
-
 import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
+import retrofit.RestAdapter;
 
 /**
  * @author Dương Tâm Châu <dtc@iuservice.com>
@@ -17,13 +15,7 @@ public class IuApplicationModuleNetwork {
 
   @Provides
   @Singleton
-  OkHttpClient provideOkHttpClient() {
-    return new OkHttpClient();
-  }
-
-  @Provides
-  @Singleton
-  Request.Builder provideRequestBuilder() {
-    return new Request.Builder();
+  RestAdapter.Builder provideRestAdapterBuilder() {
+    return new RestAdapter.Builder();
   }
 }
