@@ -9,9 +9,9 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import com.google.gson.JsonElement;
 import com.iuservice.udacity.android.fundamental.app.x1.sunshine.R;
 import com.iuservice.udacity.android.fundamental.app.x1.sunshine.SunshineApplication;
+import com.iuservice.udacity.android.fundamental.app.x1.sunshine.model.WeatherData;
 import com.iuservice.udacity.android.fundamental.app.x1.sunshine.service.WeatherService;
 
 import java.util.ArrayList;
@@ -35,6 +35,8 @@ public class MainActivityFragment extends Fragment {
   @Inject
   WeatherService m_weatherService;
 
+  private ArrayAdapter<String> m_weatherAdapter;
+
   @Override
   public void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -47,14 +49,21 @@ public class MainActivityFragment extends Fragment {
     View myFragment = inflater.inflate(R.layout.fragment_main, container, false);
     m_forecastListView = (ListView) myFragment.findViewById(R.id.list_view_forecast);
 
-    final ArrayList<String> fakeData = new ArrayList<>(51);
-    try {
-      m_weatherService.getWeather(new Callback<JsonElement>() {
-        @Override
-        public void success(JsonElement element, Response response) {
-          fakeData.add(element.toString());
-          Log.e("TESTING", element.toString());
 
+    m_weatherAdapter = new ArrayAdapter<String>(
+        getActivity(),
+        R.layout.fake_weather_list_item,
+        R.id.weatherLabel,
+        new ArrayList<String>()
+    );
+
+    m_forecastListView.setAdapter(m_weatherAdapter);
+    try {
+      m_weatherService.getWeather(new Callback<WeatherData>() {
+        @Override
+        public void success(WeatherData weatherData, Response response) {
+          m_weatherAdapter.add(weatherData.getCity().getName());
+          Log.e("TESTING", weatherData.toString());
         }
 
         @Override
@@ -67,17 +76,8 @@ public class MainActivityFragment extends Fragment {
       e.printStackTrace();
     }
     for (int i = 1; i < 5; ++i) {
-      fakeData.add(String.format("Item #%3d", i));
+      m_weatherAdapter.add(String.format("Item #%3d", i));
     }
-
-    ArrayAdapter<String> weatherAdapter = new ArrayAdapter<String>(
-        getActivity(),
-        R.layout.fake_weather_list_item,
-        R.id.weatherLabel,
-        fakeData
-    );
-
-    m_forecastListView.setAdapter(weatherAdapter);
 
     return myFragment;
   }

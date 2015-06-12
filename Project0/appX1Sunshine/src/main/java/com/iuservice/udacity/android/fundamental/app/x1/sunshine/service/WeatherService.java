@@ -1,6 +1,6 @@
 package com.iuservice.udacity.android.fundamental.app.x1.sunshine.service;
 
-import com.google.gson.JsonElement;
+import com.iuservice.udacity.android.fundamental.app.x1.sunshine.model.WeatherData;
 
 import retrofit.Callback;
 import retrofit.http.GET;
@@ -11,6 +11,6 @@ import retrofit.http.GET;
  */
 public interface WeatherService {
 
-  @GET("/data/2.5/weather?q=London,uk")
-  void getWeather(Callback<JsonElement> callback);
+  @GET("/data/2.5/forecast/daily?q=London&mode=json&units=metric&cnt=7")
+  void getWeather(Callback<WeatherData> callback);
 }
