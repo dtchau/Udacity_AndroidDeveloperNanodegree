@@ -11,7 +11,7 @@ import android.widget.ListView;
 
 import com.iuservice.udacity.android.fundamental.app.x1.sunshine.R;
 import com.iuservice.udacity.android.fundamental.app.x1.sunshine.SunshineApplication;
-import com.iuservice.udacity.android.fundamental.app.x1.sunshine.model.WeatherData;
+import com.iuservice.udacity.android.fundamental.app.x1.sunshine.model.WeatherResult;
 import com.iuservice.udacity.android.fundamental.app.x1.sunshine.service.WeatherService;
 
 import java.util.ArrayList;
@@ -59,24 +59,21 @@ public class MainActivityFragment extends Fragment {
 
     m_forecastListView.setAdapter(m_weatherAdapter);
     try {
-      m_weatherService.getWeather(new Callback<WeatherData>() {
+      m_weatherService.getWeather(new Callback<WeatherResult>() {
         @Override
-        public void success(WeatherData weatherData, Response response) {
-          m_weatherAdapter.add(weatherData.getCity().getName());
-          Log.e("TESTING", weatherData.toString());
+        public void success(WeatherResult weatherResult, Response response) {
+          for (WeatherResult.WeatherData weatherData : weatherResult.getList()) {
+            m_weatherAdapter.add(weatherData.toString());
+          }
         }
 
         @Override
         public void failure(RetrofitError error) {
-          Log.e("TESTING", "FAILED");
-          Log.e("TESTING", error.getMessage());
+          Log.e(this.getClass().getCanonicalName(), error.getMessage(), error);
         }
       });
     } catch (Exception e) {
       e.printStackTrace();
-    }
-    for (int i = 1; i < 5; ++i) {
-      m_weatherAdapter.add(String.format("Item #%3d", i));
     }
 
     return myFragment;

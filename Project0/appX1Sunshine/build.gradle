@@ -32,4 +32,7 @@ dependencies {
   compile 'javax.annotation:javax.annotation-api:1.2'
 
   compile 'com.squareup.retrofit:retrofit:1.9.0'
+
+  provided 'org.projectlombok:lombok:1.12.6'
+  apt 'org.projectlombok:lombok:1.12.6'
 }
