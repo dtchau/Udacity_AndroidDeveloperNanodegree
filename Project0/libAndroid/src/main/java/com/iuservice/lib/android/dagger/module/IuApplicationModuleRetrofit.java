@@ -16,7 +16,7 @@ import retrofit.converter.GsonConverter;
  * @date 2015-06-11.
  */
 @Module
-public class IuApplicationModuleNetwork {
+public class IuApplicationModuleRetrofit {
 
   @Provides
   @Singleton

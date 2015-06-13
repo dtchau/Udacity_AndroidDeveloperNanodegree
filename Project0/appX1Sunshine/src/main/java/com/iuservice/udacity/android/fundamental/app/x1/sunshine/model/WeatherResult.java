@@ -2,7 +2,6 @@ package com.iuservice.udacity.android.fundamental.app.x1.sunshine.model;
 
 import com.iuservice.lib.android.gson.DateFromUnixSecond;
 
-import java.util.Date;
 import java.util.List;
 
 import lombok.Data;
@@ -16,7 +15,6 @@ public class WeatherResult {
 
   private City city;
   private List<WeatherData> list;
-
 
   @Data
   public static class City {
@@ -40,7 +38,7 @@ public class WeatherResult {
     private List<Weather> weather;
 
     @Data
-    private static class Temp {
+    public static class Temp {
       private Double day;
       private Double min;
       private Double max;
@@ -50,7 +48,7 @@ public class WeatherResult {
     }
 
     @Data
-    private static class Weather {
+    public static class Weather {
       private Integer id;
       private String main;
       private String description;
