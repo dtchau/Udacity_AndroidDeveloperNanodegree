@@ -1,20 +1,21 @@
 package com.iuservice.udacity.android.fundamental.app.x1.sunshine.activity.main;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.iuservice.lib.android.dagger.qualifier.DateOnly;
 import com.iuservice.udacity.android.fundamental.app.x1.sunshine.R;
 import com.iuservice.udacity.android.fundamental.app.x1.sunshine.SunshineApplication;
+import com.iuservice.udacity.android.fundamental.app.x1.sunshine.activity.RootFragment;
 import com.iuservice.udacity.android.fundamental.app.x1.sunshine.model.WeatherResult;
 import com.iuservice.udacity.android.fundamental.app.x1.sunshine.service.WeatherService;
 
@@ -32,11 +33,12 @@ import retrofit.client.Response;
 /**
  * A placeholder fragment containing a simple view.
  */
-public class WeatherForecastFragment extends Fragment {
+public class WeatherForecastFragment extends RootFragment {
 
   @InjectView(R.id.list_view_forecast)
   ListView m_forecastListView;
 
+  Context m_context;
   @Inject
   @DateOnly
   DateFormat m_dateFormat;
@@ -45,11 +47,42 @@ public class WeatherForecastFragment extends Fragment {
 
   private ArrayAdapter<String> m_weatherAdapter;
 
+
   @Override
   public void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     ((SunshineApplication) getActivity().getApplication()).getComponent().inject(this);
+    m_context = getActivity();
     setHasOptionsMenu(true);
+  }
+
+  @Override
+  protected int getLayoutId() {
+    return R.layout.fragment_weather;
+  }
+
+  @Override
+  protected void createGui() {
+    m_weatherAdapter = new ArrayAdapter<String>(
+        getActivity(),
+        R.layout.fake_weather_list_item,
+        R.id.weatherLabel,
+        new ArrayList<String>()
+    );
+
+    m_forecastListView.setAdapter(m_weatherAdapter);
+
+    m_forecastListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+      @Override
+      public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        final Intent intent = new Intent();
+        intent.setClass(m_context, DetailActivity.class);
+        intent.putExtra(Intent.EXTRA_TEXT, m_weatherAdapter.getItem(position));
+        m_context.startActivity(intent);
+      }
+    });
+
+    fetchWeatherInfo();
   }
 
   @Override
@@ -66,24 +99,6 @@ public class WeatherForecastFragment extends Fragment {
       default:
         return super.onOptionsItemSelected(item);
     }
-  }
-
-  @Override
-  public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                           Bundle savedInstanceState) {
-    View myFragment = inflater.inflate(R.layout.fragment_main, container, false);
-    m_forecastListView = (ListView) myFragment.findViewById(R.id.list_view_forecast);
-
-    m_weatherAdapter = new ArrayAdapter<String>(
-        getActivity(),
-        R.layout.fake_weather_list_item,
-        R.id.weatherLabel,
-        new ArrayList<String>()
-    );
-
-    m_forecastListView.setAdapter(m_weatherAdapter);
-
-    return myFragment;
   }
 
   private void fetchWeatherInfo() {

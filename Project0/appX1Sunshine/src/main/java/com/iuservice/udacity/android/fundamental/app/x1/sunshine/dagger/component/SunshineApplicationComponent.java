@@ -4,7 +4,9 @@ import com.iuservice.lib.android.dagger.module.IuApplicationModule;
 import com.iuservice.lib.android.dagger.module.IuApplicationModuleDateFormat;
 import com.iuservice.lib.android.dagger.module.IuApplicationModuleRetrofit;
 import com.iuservice.udacity.android.fundamental.app.x1.sunshine.SunshineApplication;
-import com.iuservice.udacity.android.fundamental.app.x1.sunshine.activity.main.MainActivity;
+import com.iuservice.udacity.android.fundamental.app.x1.sunshine.activity.main.DetailActivity;
+import com.iuservice.udacity.android.fundamental.app.x1.sunshine.activity.main.DetailActivityFragment;
+import com.iuservice.udacity.android.fundamental.app.x1.sunshine.activity.main.WeatherForecastActivity;
 import com.iuservice.udacity.android.fundamental.app.x1.sunshine.activity.main.WeatherForecastFragment;
 import com.iuservice.udacity.android.fundamental.app.x1.sunshine.dagger.module.SunshineModule;
 
@@ -27,7 +29,11 @@ public interface SunshineApplicationComponent {
 
   void inject(SunshineApplication application);
 
-  void inject(MainActivity activity);
+  void inject(WeatherForecastActivity activity);
 
   void inject(WeatherForecastFragment fragment);
+
+  void inject(DetailActivity activity);
+
+  void inject(DetailActivityFragment fragment);
 }
