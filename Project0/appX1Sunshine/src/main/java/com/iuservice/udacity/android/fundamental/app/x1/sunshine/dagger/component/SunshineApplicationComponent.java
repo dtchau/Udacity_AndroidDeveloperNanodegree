@@ -8,6 +8,7 @@ import com.iuservice.udacity.android.fundamental.app.x1.sunshine.activity.main.D
 import com.iuservice.udacity.android.fundamental.app.x1.sunshine.activity.main.DetailActivityFragment;
 import com.iuservice.udacity.android.fundamental.app.x1.sunshine.activity.main.WeatherForecastActivity;
 import com.iuservice.udacity.android.fundamental.app.x1.sunshine.activity.main.WeatherForecastFragment;
+import com.iuservice.udacity.android.fundamental.app.x1.sunshine.activity.setting.SettingActivity;
 import com.iuservice.udacity.android.fundamental.app.x1.sunshine.dagger.module.SunshineModule;
 
 import javax.inject.Singleton;
@@ -36,4 +37,6 @@ public interface SunshineApplicationComponent {
   void inject(DetailActivity activity);
 
   void inject(DetailActivityFragment fragment);
+
+  void inject(SettingActivity activity);
 }

@@ -1,6 +1,7 @@
 package com.iuservice.udacity.android.fundamental.app.x1.sunshine.model;
 
 import com.iuservice.lib.android.gson.DateFromUnixSecond;
+import com.iuservice.lib.util.UnitUtil;
 
 import java.util.List;
 
@@ -45,6 +46,14 @@ public class WeatherResult {
       private Double night;
       private Double eve;
       private Double morn;
+
+      public Double getMinInImperial() {
+        return UnitUtil.convertCelsiusToFahrenheit(min);
+      }
+
+      public Double getMaxInImperial() {
+        return UnitUtil.convertCelsiusToFahrenheit(max);
+      }
     }
 
     @Data

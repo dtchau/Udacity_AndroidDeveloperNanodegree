@@ -5,6 +5,7 @@ import android.app.Application;
 import com.iuservice.lib.android.dagger.module.IuApplicationModule;
 import com.iuservice.udacity.android.fundamental.app.x1.sunshine.dagger.component.DaggerSunshineApplicationComponent;
 import com.iuservice.udacity.android.fundamental.app.x1.sunshine.dagger.component.SunshineApplicationComponent;
+import com.iuservice.udacity.android.fundamental.app.x1.sunshine.dagger.module.SunshineModule;
 
 /**
  * @author Dương Tâm Châu <dtc@iuservice.com>
@@ -28,6 +29,7 @@ public class SunshineApplication extends Application {
   private SunshineApplicationComponent createApplicationComponent() {
     return DaggerSunshineApplicationComponent.builder()
         .iuApplicationModule(new IuApplicationModule(this))
+        .sunshineModule(new SunshineModule(this))
         .build();
   }
 }

@@ -11,10 +11,13 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.iuservice.lib.android.dagger.qualifier.DateOnly;
+import com.iuservice.lib.android.util.ActivityUtil;
 import com.iuservice.udacity.android.fundamental.app.x1.sunshine.R;
 import com.iuservice.udacity.android.fundamental.app.x1.sunshine.SunshineApplication;
+import com.iuservice.udacity.android.fundamental.app.x1.sunshine.SunshineApplicationSettings;
 import com.iuservice.udacity.android.fundamental.app.x1.sunshine.activity.RootFragment;
 import com.iuservice.udacity.android.fundamental.app.x1.sunshine.model.WeatherResult;
 import com.iuservice.udacity.android.fundamental.app.x1.sunshine.service.WeatherService;
@@ -42,6 +45,8 @@ public class WeatherForecastFragment extends RootFragment {
   @Inject
   @DateOnly
   DateFormat m_dateFormat;
+  @Inject
+  SunshineApplicationSettings m_applicationSettings;
   @Inject
   WeatherService m_weatherService;
 
@@ -76,13 +81,10 @@ public class WeatherForecastFragment extends RootFragment {
       @Override
       public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         final Intent intent = new Intent();
-        intent.setClass(m_context, DetailActivity.class);
         intent.putExtra(Intent.EXTRA_TEXT, m_weatherAdapter.getItem(position));
-        m_context.startActivity(intent);
+        ActivityUtil.startActivity(m_context, DetailActivity.class, intent);
       }
     });
-
-    fetchWeatherInfo();
   }
 
   @Override
@@ -101,19 +103,28 @@ public class WeatherForecastFragment extends RootFragment {
     }
   }
 
+  @Override
+  public void onStart() {
+    super.onStart();
+    fetchWeatherInfo();
+  }
+
   private void fetchWeatherInfo() {
     try {
-      m_weatherService.getWeather("London", 7, new Callback<WeatherResult>() {
+      String location = m_applicationSettings.getUserLocation();
+      final boolean isDisplayUnitInMetric = m_applicationSettings.isDisplayUnitInMetric();
+      m_weatherService.getWeather(location, 7, new Callback<WeatherResult>() {
         @Override
         public void success(WeatherResult weatherResult, Response response) {
+          m_weatherAdapter.clear();
           for (WeatherResult.WeatherData weatherData : weatherResult.getList()) {
             WeatherResult.WeatherData.Temp temp = weatherData.getTemp();
             m_weatherAdapter.add(
                 String.format("%s - %s. From %3.0f to %3.0f"
                     , m_dateFormat.format(weatherData.getDt())
                     , weatherData.getWeather().get(0).getDescription()
-                    , temp.getMin()
-                    , temp.getMax())
+                    , isDisplayUnitInMetric ? temp.getMin() : temp.getMinInImperial()
+                    , isDisplayUnitInMetric ? temp.getMax() : temp.getMaxInImperial())
             );
           }
         }
@@ -121,6 +132,7 @@ public class WeatherForecastFragment extends RootFragment {
         @Override
         public void failure(RetrofitError error) {
           Log.e(this.getClass().getCanonicalName(), error.getMessage(), error);
+          Toast.makeText(m_context, String.format("Having problem retrieving data - '%s'", error.getMessage()), Toast.LENGTH_LONG).show();
         }
       });
     } catch (Exception e) {
