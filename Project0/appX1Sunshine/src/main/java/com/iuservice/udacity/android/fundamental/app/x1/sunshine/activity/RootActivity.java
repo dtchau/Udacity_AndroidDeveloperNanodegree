@@ -3,6 +3,7 @@ package com.iuservice.udacity.android.fundamental.app.x1.sunshine.activity;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
@@ -30,6 +31,38 @@ public abstract class RootActivity extends ActionBarActivity {
     super.onCreate(savedInstanceState);
     setContentView(getLayoutId());
     ButterKnife.inject(this);
+    Log.d("LifeCycle", String.format("%s onCreate()", getLocalClassName()));
+  }
+
+
+  @Override
+  protected void onStart() {
+    super.onStart();
+    Log.d("LifeCycle", String.format("%s onStart()", getLocalClassName()));
+  }
+
+  @Override
+  protected void onPause() {
+    super.onPause();
+    Log.d("LifeCycle", String.format("%s onPause()", getLocalClassName()));
+  }
+
+  @Override
+  protected void onResume() {
+    super.onResume();
+    Log.d("LifeCycle", String.format("%s onResume()", getLocalClassName()));
+  }
+
+  @Override
+  protected void onStop() {
+    super.onStop();
+    Log.d("LifeCycle", String.format("%s onStop()", getLocalClassName()));
+  }
+
+  @Override
+  protected void onDestroy() {
+    super.onDestroy();
+    Log.d("LifeCycle", String.format("%s onDestroy()", getLocalClassName()));
   }
 
   @Override
