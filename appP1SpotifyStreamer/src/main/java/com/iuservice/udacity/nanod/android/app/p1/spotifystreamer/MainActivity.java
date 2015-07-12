@@ -1,17 +1,30 @@
 package com.iuservice.udacity.nanod.android.app.p1.spotifystreamer;
 
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
+
+import com.iuservice.lib.android.activity.BaseActivity;
+import com.squareup.picasso.Picasso;
+
+import butterknife.InjectView;
 
 
-public class BaseActivity extends ActionBarActivity {
+public class MainActivity extends BaseActivity {
+
+  @InjectView(R.id.imageView)
+  ImageView m_imageView;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_base);
+    Picasso.with(this).load("http://ww1.prweb.com/prfiles/2014/04/10/11752526/gI_134971_best-image-web-hosting.png").into(m_imageView);
+  }
+
+  @Override
+  protected int getActivityLayoutId() {
+    return R.layout.activity_base;
   }
 
   @Override
