@@ -1,7 +1,7 @@
 <resources>
 
   <!-- Base application theme. -->
-  <style name="AppTheme" parent="Base.Theme.AppCompat.Light.DarkActionBar">
+  <style name="My.AppTheme" parent="Base.Theme.AppCompat.Light.DarkActionBar">
     <!-- Customize your theme here. -->
   </style>
 
@@ -14,6 +14,20 @@
   </style>
 
   <!--Layout Styles-->
+  <style name="My.Layout.FullWidth" parent="">
+    <item name="android:layout_width">fill_parent</item>
+    <item name="android:layout_height">wrap_content</item>
+  </style>
+
+  <style name="My.Layout.FullWidth.Outer">
+    <item name="android:padding">?android:layout</item>
+  </style>
+
+  <style name="My.Layout.FullWidth.Inner">
+    <item name="android:layout_centerVertical">true</item>
+    <item name="android:layout_centerHorizontal">true</item>
+  </style>
+
   <style name="My.Layout.Full" parent="">
     <item name="android:layout_width">fill_parent</item>
     <item name="android:layout_height">fill_parent</item>
@@ -26,6 +40,12 @@
   <style name="My.Layout.Full.Inner">
     <item name="android:layout_centerVertical">true</item>
     <item name="android:layout_centerHorizontal">true</item>
+  </style>
+
+  <style name="My.TextAppearance.Padded" parent="Base.TextAppearance.AppCompat">
+    <item name="android:padding">@dimen/activity_margin</item>
+    <item name="android:layout_width">wrap_content</item>
+    <item name="android:layout_height">wrap_content</item>
   </style>
 
 </resources>

@@ -1,4 +1,4 @@
-apply plugin: 'com.android.library'
+apply plugin: 'com.android.application'
 apply plugin: 'com.neenbedankt.android-apt'
 
 android {
@@ -6,6 +6,7 @@ android {
   buildToolsVersion '22.0.1'
 
   defaultConfig {
+    applicationId "com.iuservice.udacity.android.fundamental.app.x1.sunshine"
     minSdkVersion 15
     targetSdkVersion 22
     versionCode 1
@@ -20,11 +21,18 @@ android {
 }
 
 dependencies {
+  compile project(':libAndroid')
   compile fileTree(include: ['*.jar'], dir: 'libs')
   compile 'com.android.support:appcompat-v7:22.2.0'
+  compile 'com.jakewharton:butterknife:6.1.0'
+  compile 'com.google.guava:guava:18.0'
+
   apt 'com.google.dagger:dagger-compiler:2.0'
   compile 'com.google.dagger:dagger:2.0'
   compile 'javax.annotation:javax.annotation-api:1.2'
 
   compile 'com.squareup.retrofit:retrofit:1.9.0'
+
+  provided 'org.projectlombok:lombok:1.12.6'
+  apt 'org.projectlombok:lombok:1.12.6'
 }
