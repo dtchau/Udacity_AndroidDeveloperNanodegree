@@ -1,0 +1,15 @@
+<LinearLayout
+  style="@style/My.Layout.Full.Outer"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:orientation="vertical">
+
+  <EditText
+    android:id="@+id/searchEditText"
+    style="@style/My.Layout.FullWidth.Inner"
+    android:maxLines="1"/>
+
+
+  <ListView
+    android:id="@+id/artistListView"
+    style="@style/My.Layout.Full.Inner"></ListView>
+</LinearLayout>

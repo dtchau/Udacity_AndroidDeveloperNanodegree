@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+  style="@style/My.Layout.FullWidth.Inner"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_height="?android:listPreferredItemHeight"
+  android:layout_gravity="center_vertical"
+  android:minHeight="?android:listPreferredItemHeightSmall"
+  android:minWidth="?android:listPreferredItemHeightSmall"
+  android:orientation="horizontal">
+
+  <ImageView
+    android:id="@+id/artistThumbnailImageView"
+    android:layout_width="50dp"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/padding_large"
+    android:maxWidth="50dp"
+    android:src="@drawable/no_image"/>
+
+  <LinearLayout
+    style="@style/My.Layout.Full"
+    android:orientation="vertical">
+
+    <TextView
+      android:id="@+id/artistNameTextView"
+      android:layout_width="fill_parent"
+      android:layout_height="wrap_content"
+      android:layout_weight="4"
+      android:padding="@dimen/padding_small"
+      android:text="Artist Name"
+      android:textSize="@dimen/abc_text_size_large_material"
+      android:textStyle="bold"/>
+
+    <TextView
+      android:layout_width="fill_parent"
+      android:layout_height="wrap_content"
+      android:layout_gravity="top"
+      android:padding="@dimen/padding_small"
+      android:text="Artist Status"/>
+  </LinearLayout>
+</LinearLayout>

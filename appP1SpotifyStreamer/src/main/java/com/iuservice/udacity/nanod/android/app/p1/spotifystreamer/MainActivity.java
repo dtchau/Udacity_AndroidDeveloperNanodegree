@@ -1,36 +1,24 @@
 package com.iuservice.udacity.nanod.android.app.p1.spotifystreamer;
 
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.ImageView;
-
-import com.iuservice.lib.android.activity.BaseActivity;
-import com.squareup.picasso.Picasso;
-
-import butterknife.InjectView;
 
 
-public class MainActivity extends BaseActivity {
-
-  @InjectView(R.id.imageView)
-  ImageView m_imageView;
+public class MainActivity extends ActionBarActivity {
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    Picasso.with(this).load("http://ww1.prweb.com/prfiles/2014/04/10/11752526/gI_134971_best-image-web-hosting.png").into(m_imageView);
+    setContentView(R.layout.activity_main);
   }
 
-  @Override
-  protected int getActivityLayoutId() {
-    return R.layout.activity_base;
-  }
 
   @Override
   public boolean onCreateOptionsMenu(Menu menu) {
     // Inflate the menu; this adds items to the action bar if it is present.
-    getMenuInflater().inflate(R.menu.menu_base, menu);
+    getMenuInflater().inflate(R.menu.menu_main, menu);
     return true;
   }
 

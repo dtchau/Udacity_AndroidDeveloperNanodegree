@@ -1,4 +1,4 @@
-package com.iuservice.lib.android.activity;
+package com.iuservice.lib.android.ui.activity;
 
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
