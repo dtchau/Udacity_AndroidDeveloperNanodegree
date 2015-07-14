@@ -14,7 +14,8 @@
     android:theme="@style/My.AppTheme">
     <activity
       android:name=".ui.activity.SearchArtistActivity"
-      android:label="@string/title_activity_search_artist">
+      android:label="@string/title_activity_search_artist"
+      android:launchMode="singleTop">
       <intent-filter>
         <action android:name="android.intent.action.MAIN"/>
         <category android:name="android.intent.category.LAUNCHER"/>
