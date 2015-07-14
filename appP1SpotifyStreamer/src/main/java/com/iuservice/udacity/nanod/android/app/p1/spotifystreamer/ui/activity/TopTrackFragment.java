@@ -2,6 +2,7 @@ package com.iuservice.udacity.nanod.android.app.p1.spotifystreamer.ui.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -11,6 +12,7 @@ import com.iuservice.lib.android.ui.fragment.BaseFragment;
 import com.iuservice.udacity.nanod.android.app.p1.spotifystreamer.R;
 import com.iuservice.udacity.nanod.android.app.p1.spotifystreamer.SpotifyStreamerApplication;
 import com.iuservice.udacity.nanod.android.app.p1.spotifystreamer.ui.spotify.adapter.TrackArrayAdapter;
+import com.iuservice.udacity.nanod.android.app.p1.spotifystreamer.ui.spotify.model.TrackParcel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,6 +34,8 @@ import retrofit.client.Response;
 public class TopTrackFragment extends BaseFragment {
 
   public static final String ARTIST_ID = TopTrackFragment.class.getCanonicalName().concat("ARTIST_ID");
+  public static final String ARTIST_NAME = TopTrackFragment.class.getCanonicalName().concat("ARTIST_NAME");
+  public static final String TRACK_LIST = TopTrackFragment.class.getCanonicalName().concat("TRACK_LIST");
   private static ImmutableMap<String, Object> COUNTRY_OPTION = ImmutableMap.<String, Object>builder().put("country", "CA").build();
 
   @InjectView(R.id.noTrackFoundTextView)
@@ -41,24 +45,14 @@ public class TopTrackFragment extends BaseFragment {
   @Inject
   SpotifyService m_spotifyService;
   private TrackArrayAdapter m_trackArrayAdapter;
+  private ArrayList<TrackParcel> m_trackList;
   private String m_artistId;
+  private String m_artistName;
 
   @Override
   public void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     ((SpotifyStreamerApplication) getActivity().getApplication()).getComponent().inject(this);
-    loadArtistId(savedInstanceState);
-  }
-
-  private void loadArtistId(Bundle savedInstanceState) {
-    if (savedInstanceState == null) {
-      Intent intent = getActivity().getIntent();
-      if (intent != null) {
-        m_artistId = intent.getStringExtra(ARTIST_ID);
-      }
-    } else {
-      m_artistId = savedInstanceState.getString(ARTIST_ID);
-    }
   }
 
   @Override
@@ -68,20 +62,40 @@ public class TopTrackFragment extends BaseFragment {
 
   @Override
   protected void createGui(Bundle savedInstanceState) {
-    m_trackArrayAdapter = new TrackArrayAdapter(getActivity(), new ArrayList<Track>());
+    m_trackList = new ArrayList<>();
+    m_trackArrayAdapter = new TrackArrayAdapter(getActivity(), m_trackList);
     m_trackListView.setAdapter(m_trackArrayAdapter);
-  }
-
-  @Override
-  public void onResume() {
-    super.onResume();
-    retrieveTopTracks();
+    loadArtistId(savedInstanceState);
   }
 
   @Override
   public void onSaveInstanceState(Bundle outState) {
     outState.putString(ARTIST_ID, m_artistId);
+    outState.putString(ARTIST_NAME, m_artistName);
+    outState.putParcelableArrayList(TRACK_LIST, m_trackList);
     super.onSaveInstanceState(outState);
+  }
+
+  private void loadArtistId(Bundle savedInstanceState) {
+    if (savedInstanceState == null) {
+      Intent intent = getActivity().getIntent();
+      if (intent != null) {
+        m_artistId = intent.getStringExtra(ARTIST_ID);
+        m_artistName = intent.getStringExtra(ARTIST_NAME);
+      }
+      retrieveTopTracks();
+    } else {
+      m_artistId = savedInstanceState.getString(ARTIST_ID);
+      m_artistName = savedInstanceState.getString(ARTIST_NAME);
+      List<TrackParcel> trackParcels = savedInstanceState.getParcelableArrayList(TRACK_LIST);
+      if (trackParcels == null || trackParcels.isEmpty()) {
+        setActivityStatus(false);
+      } else {
+        setActivityStatus(true);
+        m_trackArrayAdapter.addAll(trackParcels);
+      }
+    }
+    ((ActionBarActivity) getActivity()).getSupportActionBar().setSubtitle(m_artistName);
   }
 
   private void retrieveTopTracks() {
@@ -92,7 +106,7 @@ public class TopTrackFragment extends BaseFragment {
           List<Track> trackList = tracks.tracks;
           if (trackList != null && !trackList.isEmpty()) {
             setActivityStatus(true);
-            m_trackArrayAdapter.addAll(trackList);
+            m_trackArrayAdapter.addAll(TrackParcel.extractTrackParcels(trackList));
           } else {
             setActivityStatus(false);
           }

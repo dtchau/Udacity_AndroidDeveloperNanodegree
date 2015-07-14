@@ -7,19 +7,15 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.iuservice.udacity.nanod.android.app.p1.spotifystreamer.R;
+import com.iuservice.udacity.nanod.android.app.p1.spotifystreamer.ui.spotify.model.ArtistParcel;
+import com.iuservice.udacity.nanod.android.app.p1.spotifystreamer.ui.spotify.model.TrackParcel;
 import com.squareup.picasso.Picasso;
-
-import java.util.List;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
-import kaaes.spotify.webapi.android.models.AlbumSimple;
-import kaaes.spotify.webapi.android.models.Artist;
-import kaaes.spotify.webapi.android.models.Image;
-import kaaes.spotify.webapi.android.models.Track;
 
 /**
  * @author Dương Tâm Châu <dtc@iuservice.com>
@@ -44,34 +40,12 @@ public class ArtistTrackViewBuilder {
     m_picasso = picasso;
   }
 
-  private static String getThumbnailUrl(Artist artist) {
-    return getThumbnailUrl(artist.images);
+  protected View build(ViewGroup parent, ArtistParcel artistParcel) {
+    return build(parent, artistParcel.getThumbnailUrl(), artistParcel.getArtistName(), String.format("Followers: %d", artistParcel.getNumberOfFollowers()));
   }
 
-  private static String getThumbnailUrl(Track track) {
-    AlbumSimple album = track.album;
-    if (album == null) {
-      return null;
-    }
-
-    return getThumbnailUrl(album.images);
-  }
-
-  private static String getThumbnailUrl(List<Image> images) {
-    if (images == null || images.isEmpty()) {
-      return null;
-    }
-
-    return images.get(0).url;
-  }
-
-  protected View build(ViewGroup parent, Artist artist) {
-    return build(parent, getThumbnailUrl(artist), artist.name, String.format("Followers: %d", artist.followers.total));
-  }
-
-  protected View build(ViewGroup parent, Track track) {
-    AlbumSimple albumSimple = track.album;
-    return build(parent, getThumbnailUrl(track), track.name, String.format("Album: %s", albumSimple == null ? "N/A" : albumSimple.name));
+  protected View build(ViewGroup parent, TrackParcel trackParcel) {
+    return build(parent, trackParcel.getThumbnailUrl(), trackParcel.getTrackName(), String.format("Album: %s", trackParcel.getAlbumName()));
   }
 
   private View build(ViewGroup parent, String thumbnailUrl, String title, String status) {
