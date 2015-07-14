@@ -14,9 +14,13 @@
   </style>
 
   <!--Layout Styles-->
-  <style name="My.Layout.FullWidth" parent="">
-    <item name="android:layout_width">fill_parent</item>
+  <style name="My.Layout" parent="">
+    <item name="android:layout_width">wrap_content</item>
     <item name="android:layout_height">wrap_content</item>
+  </style>
+
+  <style name="My.Layout.FullWidth">
+    <item name="android:layout_width">fill_parent</item>
   </style>
 
   <style name="My.Layout.FullWidth.Outer">
@@ -28,7 +32,7 @@
     <item name="android:layout_centerHorizontal">true</item>
   </style>
 
-  <style name="My.Layout.Full" parent="">
+  <style name="My.Layout.Full">
     <item name="android:layout_width">fill_parent</item>
     <item name="android:layout_height">fill_parent</item>
   </style>

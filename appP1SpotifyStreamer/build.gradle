@@ -3,10 +3,10 @@ apply plugin: 'com.neenbedankt.android-apt'
 
 android {
   compileSdkVersion 22
-  buildToolsVersion '22.0.1'
+  buildToolsVersion "23.0.0 rc2"
 
   defaultConfig {
-    applicationId "com.iuservice.udacity.android.fundamental.app.x1.sunshine"
+    applicationId "com.iuservice.udacity.nanod.android.app.p1.spotifystreamer"
     minSdkVersion 15
     targetSdkVersion 22
     versionCode 1
@@ -22,9 +22,10 @@ android {
 
 dependencies {
   compile project(':libAndroid')
-  compile fileTree(include: ['*.jar'], dir: 'libs')
+  compile fileTree(dir: 'libs', include: ['*.jar'])
   compile 'com.google.dagger:dagger:2.0'
   apt 'com.google.dagger:dagger-compiler:2.0'
   provided 'org.projectlombok:lombok:1.12.6'
   apt 'org.projectlombok:lombok:1.12.6'
+  compile(name: 'spotify-web-api-android-0.1.0', ext: 'aar')
 }

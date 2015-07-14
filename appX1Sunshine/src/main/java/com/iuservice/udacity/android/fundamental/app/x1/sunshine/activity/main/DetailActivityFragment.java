@@ -21,10 +21,10 @@ import butterknife.InjectView;
  */
 public class DetailActivityFragment extends RootFragment {
 
-  private String m_detailText;
-  private ShareActionProvider m_shareActionProvider;
   @InjectView(R.id.text)
   TextView m_textView;
+  private String m_detailText;
+  private ShareActionProvider m_shareActionProvider;
 
   @Override
   public void onCreate(Bundle savedInstanceState) {

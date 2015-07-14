@@ -19,7 +19,7 @@ public class DateFromUnixSecond extends Date {
   }
 
   private long toJsonValue() {
-    return getTime()/1000;
+    return getTime() / 1000;
   }
 
   public static class DateFromUnixSecondTypeAdapter extends TypeAdapter<DateFromUnixSecond> {
