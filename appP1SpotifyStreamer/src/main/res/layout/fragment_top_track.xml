@@ -1,0 +1,18 @@
+<LinearLayout
+  style="@style/My.Layout.Full.Outer"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:orientation="vertical">
+
+  <ListView
+    android:id="@+id/trackListView"
+    style="@style/My.Layout.Full.Outer"
+    xmlns:android="http://schemas.android.com/apk/res/android"></ListView>
+
+  <TextView
+    android:id="@+id/noTrackFoundTextView"
+    style="@style/My.Layout.Full.Inner"
+    android:layout_gravity="center_vertical"
+    android:text="No Tracks Found!"
+    android:textSize="30dp"
+    android:visibility="gone"/>
+</LinearLayout>

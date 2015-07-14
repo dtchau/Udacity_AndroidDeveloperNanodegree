@@ -1,0 +1,31 @@
+<resources>
+
+  <!-- Base application theme. -->
+  <style name="AppTheme" parent="Base.Theme.AppCompat.Light.DarkActionBar">
+    <!-- Customize your theme here. -->
+  </style>
+
+  <!--Text Styles-->
+  <style name="My.Headline.Big" parent="Base.TextAppearance.AppCompat.Headline">
+    <item name="android:layout_width">fill_parent</item>
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:textSize">@dimen/abc_text_size_large_material</item>
+    <item name="android:textStyle">bold</item>
+  </style>
+
+  <!--Layout Styles-->
+  <style name="My.Layout.Full" parent="">
+    <item name="android:layout_width">fill_parent</item>
+    <item name="android:layout_height">fill_parent</item>
+  </style>
+
+  <style name="My.Layout.Full.Outer">
+    <item name="android:padding">@dimen/activity_margin</item>
+  </style>
+
+  <style name="My.Layout.Full.Inner">
+    <item name="android:layout_centerVertical">true</item>
+    <item name="android:layout_centerHorizontal">true</item>
+  </style>
+
+</resources>

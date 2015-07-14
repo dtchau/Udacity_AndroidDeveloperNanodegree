@@ -1,0 +1,12 @@
+<FrameLayout
+  style="@style/My.Layout.Full.Outer"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:tools="http://schemas.android.com/tools"
+  tools:context=".MainActivityFragment">
+
+  <TextView
+    android:id="@+id/text"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"/>
+
+</FrameLayout>
