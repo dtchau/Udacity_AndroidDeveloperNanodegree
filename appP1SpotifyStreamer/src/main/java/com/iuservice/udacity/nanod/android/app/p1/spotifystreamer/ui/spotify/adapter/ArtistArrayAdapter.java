@@ -1,4 +1,4 @@
-package com.iuservice.udacity.nanod.android.app.p1.spotifystreamer.ui.adapter.spotify;
+package com.iuservice.udacity.nanod.android.app.p1.spotifystreamer.ui.spotify.adapter;
 
 import android.content.Context;
 import android.view.View;

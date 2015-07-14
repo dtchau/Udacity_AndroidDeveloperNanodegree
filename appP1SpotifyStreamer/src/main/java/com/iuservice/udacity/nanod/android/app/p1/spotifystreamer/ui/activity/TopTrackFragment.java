@@ -10,7 +10,7 @@ import com.google.common.collect.ImmutableMap;
 import com.iuservice.lib.android.ui.fragment.BaseFragment;
 import com.iuservice.udacity.nanod.android.app.p1.spotifystreamer.R;
 import com.iuservice.udacity.nanod.android.app.p1.spotifystreamer.SpotifyStreamerApplication;
-import com.iuservice.udacity.nanod.android.app.p1.spotifystreamer.ui.adapter.spotify.TrackArrayAdapter;
+import com.iuservice.udacity.nanod.android.app.p1.spotifystreamer.ui.spotify.adapter.TrackArrayAdapter;
 
 import java.util.ArrayList;
 import java.util.List;

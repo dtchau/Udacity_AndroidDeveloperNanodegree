@@ -11,7 +11,7 @@ import com.iuservice.lib.android.ui.fragment.BaseFragment;
 import com.iuservice.lib.android.util.ActivityUtil;
 import com.iuservice.udacity.nanod.android.app.p1.spotifystreamer.R;
 import com.iuservice.udacity.nanod.android.app.p1.spotifystreamer.SpotifyStreamerApplication;
-import com.iuservice.udacity.nanod.android.app.p1.spotifystreamer.ui.adapter.spotify.ArtistArrayAdapter;
+import com.iuservice.udacity.nanod.android.app.p1.spotifystreamer.ui.spotify.adapter.ArtistArrayAdapter;
 
 import java.util.ArrayList;
 import java.util.List;

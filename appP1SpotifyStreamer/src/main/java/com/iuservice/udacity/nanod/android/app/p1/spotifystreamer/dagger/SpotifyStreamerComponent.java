@@ -6,9 +6,9 @@ import com.iuservice.lib.android.dagger.module.IuApplicationModuleRetrofit;
 import com.iuservice.udacity.nanod.android.app.p1.spotifystreamer.SpotifyStreamerApplication;
 import com.iuservice.udacity.nanod.android.app.p1.spotifystreamer.ui.activity.SearchArtistFragment;
 import com.iuservice.udacity.nanod.android.app.p1.spotifystreamer.ui.activity.TopTrackFragment;
-import com.iuservice.udacity.nanod.android.app.p1.spotifystreamer.ui.adapter.spotify.ArtistArrayAdapter;
-import com.iuservice.udacity.nanod.android.app.p1.spotifystreamer.ui.adapter.spotify.ArtistTrackViewBuilder;
-import com.iuservice.udacity.nanod.android.app.p1.spotifystreamer.ui.adapter.spotify.TrackArrayAdapter;
+import com.iuservice.udacity.nanod.android.app.p1.spotifystreamer.ui.spotify.adapter.ArtistArrayAdapter;
+import com.iuservice.udacity.nanod.android.app.p1.spotifystreamer.ui.spotify.adapter.ArtistTrackViewBuilder;
+import com.iuservice.udacity.nanod.android.app.p1.spotifystreamer.ui.spotify.adapter.TrackArrayAdapter;
 
 import javax.inject.Singleton;
 
