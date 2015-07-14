@@ -2,6 +2,7 @@ package com.iuservice.lib.android.dagger.module;
 
 import android.app.Application;
 import android.content.Context;
+import android.view.LayoutInflater;
 
 import javax.inject.Singleton;
 
@@ -31,5 +32,11 @@ public class IuApplicationModule {
   @Singleton
   Context provideApplicationContext() {
     return m_application;
+  }
+
+  @Provides
+  @Singleton
+  LayoutInflater provideLayoutInflater() {
+    return (LayoutInflater) m_application.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
   }
 }

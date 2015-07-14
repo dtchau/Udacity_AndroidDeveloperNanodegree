@@ -20,7 +20,7 @@ public abstract class BaseFragment extends Fragment {
   public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
     m_rootView = inflater.inflate(getLayoutId(), container, false);
     ButterKnife.inject(this, m_rootView);
-    createGui();
+    createGui(savedInstanceState);
     return m_rootView;
   }
 
@@ -30,6 +30,6 @@ public abstract class BaseFragment extends Fragment {
 
   protected abstract int getLayoutId();
 
-  protected abstract void createGui();
+  protected abstract void createGui(Bundle savedInstanceState);
 }
 

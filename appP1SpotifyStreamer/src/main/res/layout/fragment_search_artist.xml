@@ -6,10 +6,19 @@
   <EditText
     android:id="@+id/searchEditText"
     style="@style/My.Layout.FullWidth.Inner"
-    android:maxLines="1"/>
+    android:maxLines="1"
+    android:singleLine="true"/>
 
 
   <ListView
     android:id="@+id/artistListView"
     style="@style/My.Layout.Full.Inner"></ListView>
+
+  <TextView
+    android:id="@+id/noArtistFoundTextView"
+    style="@style/My.Layout.Full.Inner"
+    android:layout_gravity="center_vertical"
+    android:text="No Artists Found!"
+    android:textSize="30dp"
+    android:visibility="gone"/>
 </LinearLayout>
